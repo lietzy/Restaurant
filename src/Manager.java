@@ -13,12 +13,11 @@ public class Manager {
     public String getName() {
         return name;
     }
-
     public String getId()
     {
         return id;
-    }
 
+    }
     public int getAccessLevel(){
         return accessLevel;
     }

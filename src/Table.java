@@ -1,8 +1,5 @@
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
-import java.util.ArrayList;
-
 public class Table {
+ 
     private int id;
     private int seats;
     private Order order;
@@ -49,5 +46,6 @@ public class Table {
     public Order getOrder() {
         return order;
     }
+
 }
 //made a change here
