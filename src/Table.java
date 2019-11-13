@@ -15,6 +15,7 @@ public class Table {
         seats = Seats;
         status = reserved;
 
+
     }
 
     public Table getTable(){
