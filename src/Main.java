@@ -45,12 +45,17 @@ public class Main {
 boolean isCont = true;
 
     while(isCont){
+        System.out.println("How many seats are needed?");
+        int seats = 0;
+        seats = kb.nextInt();
+
         do {
             System.out.println("What do you want to do?");
             System.out.println("Enter the number Associated");
             System.out.println("1. Assign Customers to a Table");
-            System.out.println("2. Take an Order for a Table");
-            System.out.println("3. Edit an Order for a Table");
+            System.out.println("2. Take an Order for Assigned Table");
+            System.out.println("3. Edit an Order for Assigned Table");
+            System.out.println("6. Change assigned Table");
             System.out.println("4. Tab a Table out");
             System.out.println("5. Log Out and Exit");
             while (!kb.hasNextInt()) {
@@ -64,11 +69,11 @@ boolean isCont = true;
 
 
 
+
         switch (action){
             case 1:{
-                int seats = 0;
-                System.out.println("How many seats are needed?");
-                seats = kb.nextInt();
+
+
                 assignTable(seats);
 
 
@@ -76,9 +81,7 @@ boolean isCont = true;
                 break;
             }
             case 2:{
-                System.out.println("Select an entree");
-
-
+                makeOrder(seats);
                 break;
             }
             case 3:{
@@ -135,7 +138,44 @@ boolean isCont = true;
         System.out.println("Assigned to Table " + workingTable.getId() );
     }
 
-    public static void makeOrder(){
+    public static void makeOrder(int customers){
+        ArrayList<Food> tempOrder = new ArrayList<Food>();
+        ArrayList<String> tempAvailable = new ArrayList<String>();
+        String entreeString;
+        Food entree =  new Food("temp", 10.0, "entree");
+        String app = "";
+        String drink = "";
+        boolean pass = false;
+        for(int i = 0; i < customers; i++){
+            System.out.println("Please Select an entree");
+            for(int d = 0; d< menu.size(); d++){
+                if (menu.get(d).getType().equals("entree")){
+                    System.out.println(menu.get(d).getName());
+                    tempAvailable.add(menu.get(d).getName());
+                }
+
+            }
+            do {
+                while (!kb.hasNext()) {
+                    System.out.println("That is not one of the options... Please match the case of the entree");
+                    kb.next(); // this is important!
+                }
+                entreeString = kb.next();
+
+                for (int g =0; g< menu.size(); g++){
+                    if (menu.get(g).getName().equals(entreeString)){
+                        entree = menu.get(g);
+                        pass = true;
+                    }
+                }
+                if (pass == false){
+                    System.out.println("Please match the case of the options given");
+                }
+            } while (! tempAvailable.contains(entreeString));
+            tempOrder.add(entree);
+            System.out.println(tempOrder.get(0).getName());
+        }
+        //assign to table
 
     }
 

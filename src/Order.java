@@ -5,7 +5,7 @@ public class Order {
     private Waiter relatedWaiter;
 
 
-    public Order(Table table, Waiter currentWaiter, ArrayList<Food> foodList){
+    public Order(Table table,  ArrayList<Food> foodList){
 
 
     }
